@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-cream font-sans text-charcoal antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    @apply bg-sage/40 text-forest-900;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-forest ring-offset-2 ring-offset-cream;
+  }
+  input[type='range'] {
+    accent-color: #174c3c;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition duration-200 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn-base bg-forest text-white shadow-card hover:bg-forest-700 hover:shadow-lift;
+  }
+  .btn-accent {
+    @apply btn-base bg-tangerine text-charcoal shadow-card hover:bg-[#ee8a3e] hover:shadow-lift;
+  }
+  .btn-secondary {
+    @apply btn-base border border-forest/15 bg-white text-forest hover:border-forest/30 hover:bg-forest-50;
+  }
+  .btn-ghost {
+    @apply btn-base text-forest hover:bg-forest-50;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-sage-dark;
+  }
+  .section-title {
+    @apply font-display text-[2.1rem] font-semibold leading-[1.08] tracking-tight text-forest sm:text-5xl;
+  }
+  .field-label {
+    @apply mb-1.5 block text-sm font-semibold text-charcoal;
+  }
+  .field {
+    @apply w-full rounded-2xl border border-forest/15 bg-white px-4 py-3 text-[15px] text-charcoal placeholder:text-charcoal-muted/70 transition focus:border-forest focus:outline-none focus:ring-4 focus:ring-forest/10;
+  }
+  select.field:not(.no-chevron) {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23174C3C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    background-size: 16px;
+    appearance: none;
+    padding-right: 2.5rem;
+  }
+  .field-error {
+    @apply border-tangerine-dark/70 focus:border-tangerine-dark focus:ring-tangerine/20;
+  }
+  .chip {
+    @apply inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold transition;
+  }
+  .demo-badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-tangerine/40 bg-tangerine-light/70 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-tangerine-dark;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
